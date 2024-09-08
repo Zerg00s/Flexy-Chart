@@ -62,24 +62,6 @@ gulp serve --nobrowser
 ![](IMG/AddWebpart.png)
 
 
-## Important Study Materials for Developers
-The topics are listed in the exact order you need to study them. if you already know basics of a given topic - just skip it and move on to the next one. Note that if you are not familiar with one or more of these, it might be difficult to maintain this project. If none of these topics sound familiar, take a few days or even weeks to study them. Then come back and attempt to perform code changes.
-
-- [Learn git in 15 minutes. Video on YouTube](https://www.youtube.com/watch?v=USjZcfj8yxE)
-- [Introduction to Azure DevOps](https://www.youtube.com/watch?v=JhqpF-5E10I)
-- [What is npm? In 2 minutes - npm tutorial for beginners](https://www.youtube.com/watch?v=ZNbFagCBlwo)
-- [Gulp (Gulp.js) Tutorial for Beginners - 1 - Download and Installing npm](https://www.youtube.com/watch?v=CxM1RYnCYwM)
-- [Learn Sass In 20 Minutes | Sass Crash Course](https://www.youtube.com/watch?v=Zz6eOVaaelI)
-- [ES6 Tutorial: Learn Modern JavaScript in 1 Hour](https://www.youtube.com/watch?v=NCwa_xi0Uuc)
-- [JavaScript Async Await](https://www.youtube.com/watch?v=V_Kr9OSfDeU)
-- [JavaScript ES6 Arrow Functions Tutorial](https://www.youtube.com/watch?v=h33Srr5J9nY)
-- [TypeScript Course for Beginners 2021 - Learn TypeScript from Scratch!](https://www.youtube.com/watch?v=BwuLxPH8IDs)
-- [React Typescript Tutorial](https://www.youtube.com/watch?v=Z5iWr6Srsj8)
-- [Create a SharePoint Online App/Add-in Catalog](https://www.youtube.com/watch?v=qU08CINn4gU)
-- [Get started with the SharePoint Framework](https://docs.microsoft.com/en-us/learn/modules/sharepoint-spfx-get-started/)
-- [SharePoint Framework Tutorial 1 - HelloWorld WebPart](https://www.youtube.com/watch?v=_O2Re5uRLoo)
-
-
 ### Tips about the source code
 
 In your Visual Studio Code, open the `/src/webparts/` folder. It contains all code related to the webpart.
@@ -133,3 +115,20 @@ As a result of running this command, a `.sppkg` file will be generated inside th
 ![](IMG/OK.png)
 
 
+
+## Study Materials for SPFx Developers
+The topics are listed in the exact order you need to study them. If you already know the basics of a given topic - just skip it and move on to the next one. If you are not familiar with one or more of these, it might be difficult to maintain this project. If none of these topics sound familiar, take a few days or even weeks to study them. Then come back and attempt to perform code changes.
+
+- [Learn git in 15 minutes. Video on YouTube](https://www.youtube.com/watch?v=USjZcfj8yxE)
+- [Introduction to Azure DevOps](https://www.youtube.com/watch?v=JhqpF-5E10I)
+- [What is npm? In 2 minutes - npm tutorial for beginners](https://www.youtube.com/watch?v=ZNbFagCBlwo)
+- [Gulp (Gulp.js) Tutorial for Beginners - 1 - Download and Installing npm](https://www.youtube.com/watch?v=CxM1RYnCYwM)
+- [Learn Sass In 20 Minutes | Sass Crash Course](https://www.youtube.com/watch?v=Zz6eOVaaelI)
+- [ES6 Tutorial: Learn Modern JavaScript in 1 Hour](https://www.youtube.com/watch?v=NCwa_xi0Uuc)
+- [JavaScript Async Await](https://www.youtube.com/watch?v=V_Kr9OSfDeU)
+- [JavaScript ES6 Arrow Functions Tutorial](https://www.youtube.com/watch?v=h33Srr5J9nY)
+- [TypeScript Course for Beginners 2021 - Learn TypeScript from Scratch!](https://www.youtube.com/watch?v=BwuLxPH8IDs)
+- [React Typescript Tutorial](https://www.youtube.com/watch?v=Z5iWr6Srsj8)
+- [Create a SharePoint Online App/Add-in Catalog](https://www.youtube.com/watch?v=qU08CINn4gU)
+- [Get started with the SharePoint Framework](https://docs.microsoft.com/en-us/learn/modules/sharepoint-spfx-get-started/)
+- [SharePoint Framework Tutorial 1 - HelloWorld WebPart](https://www.youtube.com/watch?v=_O2Re5uRLoo)
