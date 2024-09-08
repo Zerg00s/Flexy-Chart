@@ -1,7 +1,16 @@
-# program-chart. Developer's Guide
-
+![SharePoint Online](https://img.shields.io/badge/SharePoint.Online-blue.svg)
 ![SharePoint Framework](https://img.shields.io/badge/SPFx-1.14-green.svg)
 ![Node.js](https://img.shields.io/badge/NodeJs-14.19.1-yellow.svg)
+![React.js](https://img.shields.io/badge/React-blue.svg)
+
+# Flexy Chart SharePoint Framework Webpart
+
+## Quick Deployment
+- Download the latest package from [Releases](#X)
+- Upload the package to the App Catalog
+- Add the webpart to a page
+
+
 
 ![](IMG/Main.png)
 
