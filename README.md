@@ -5,13 +5,14 @@
 
 # Flexy Chart SharePoint Framework Webpart
 
-The Flexy Chart webpart is using the [org-chart](https://github.com/bumbeishvili/org-chart) project, which in turn, using the popular d3 visualization library.
+The Flexy Chart webpart is a SharePoint Framework webpart that allows users to create and edit org charts. The webpart is designed to be user-friendly and easy to use. Users can add, edit, and delete nodes in the chart. The Flexy Chart webpart is  customizable, allowing users to change the appearance of the chart to suit their needs. The Flexy Chart webpart is using the [org-chart](https://github.com/bumbeishvili/org-chart) project, which in turn, using the popular d3 visualization library.
 
 ## Quick Deployment
-- Download the latest package from [Releases](#)
+- Download the latest package from [Releases](https://github.com/Zerg00s/Flexy-Chart/releases)
 - Upload the package to the App Catalog
 - Add the webpart to a page
 
+## Demo
 ### Tweaking Global Chart Settings
 ![](IMG/Main.gif)
 
@@ -19,7 +20,7 @@ The Flexy Chart webpart is using the [org-chart](https://github.com/bumbeishvili
 ![](IMG/Demo.gif)
 
 
-##  Preparing a Developer's Workstation
+## Preparing a Developer's Workstation
 
 This project is built with [SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview), [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org/). 
 
@@ -51,7 +52,7 @@ npm install
 ```
 gulp serve --nobrowser
 ```
-10. Open the [Hosted Workbench](https://contoso.sharepoint.com/sites/test/_layouts/15/workbench.aspx).
+10. Open the Hosted Workbench.
 11. Click ![](IMG/PLUS.png)
 12. Add Flexy Chart webpart:
 
