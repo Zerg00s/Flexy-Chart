@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "7778fc41-70fe-4e5f-a0a6-040201371e77",
+  "alias": "FlexyChartWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "supportsFullBleed":true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Flexy Chart" },
+    "description": { "default": "Flexy chart. For building interactive taxonomies" },
+    "officeFabricIconFontName": "Org",
+    "properties": {
+      "description": "",
+      "listTitle": "Source",
+      "nodeHeight": 125,
+      "nodeWidth": 350,
+      "childrenMargin": 50,
+      "compactMarginBetween": 20,
+      "compactMarginPair": 80,
+      "neightbourMargin": 80,
+      "siblingsMargin": 80,
+      "compactChart": false,
+      "layout": "default",
+      "fontSize": 15,
+      "linkStroke": "#CCCCCC",
+      "linkWidth": 2
+    }
+  }]
+}

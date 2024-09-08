@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "flexy-chart-client-side-solution",
+    "id": "7717cc25-dad8-40f0-86bf-30d063bd9777",
+    "version": "1.0.0.13",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "flexy-chart description"
+      },
+      "longDescription": {
+        "default": "flexy-chart description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "flexy-chart Feature",
+        "description": "The feature that activates elements of the flexy-chart solution.",
+        "id": "77b7aa0a-d43e-4133-8724-2faa46fc3c84",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/flexy-chart.sppkg"
+  }
+}
