@@ -5,7 +5,8 @@
 
 # Flexy Chart SharePoint Framework Webpart
 
-The Flexy Chart webpart is a SharePoint Framework webpart that allows users to create and edit org charts. The webpart is designed to be user-friendly and easy to use. Users can add, edit, and delete nodes in the chart. The Flexy Chart webpart is  customizable, allowing users to change the appearance of the chart to suit their needs. The Flexy Chart webpart is using the [org-chart](https://github.com/bumbeishvili/org-chart) project, which in turn, using the popular d3 visualization library.
+The Flexy Chart Web Part is a SharePoint Framework webpart designed for easy creation and editing of organizational charts. With a simple interface, users can add, edit, and delete nodes in the chart. While offering some customization options to adjust the chart's appearance, Flexy Chart leverages the [org-chart](https://github.com/bumbeishvili/org-chart) project and the D3.js visualization library for efficient chart management.
+
 
 ## Quick Deployment
 - Download the latest package from [Releases](https://github.com/Zerg00s/Flexy-Chart/releases)
@@ -34,24 +35,28 @@ This project is built with [SharePoint Framework](https://docs.microsoft.com/en-
 npm install --global gulp@4.0.2
 ```
 
-5. Run this command to install project's dependencies:
+5. Clone the repository:
+```
+git clone https://github.com/Zerg00s/Flexy-Chart.git
+```
+
+6. Run this command to install project's dependencies:
 ```
 npm install
 ```
-6. Run this command to install the developer certificate:
+7. Run this command to install the developer certificate:
 ```
 gulp trust-dev-cert
 ```
-7. Run this command to open the project using Visual Studio code:
+8. Run this command to open the project using Visual Studio code:
 ```
 code .
 ```
-8. run to start developing:
+9. run to start developing:
 ```
 gulp serve --nobrowser
 ```
-9. Open the Hosted Workbench.
-10. Click ![](IMG/PLUS.png)
+10. Open the Hosted Workbench.
 11. Add Flexy Chart webpart:
 
 ![](IMG/AddWebpart.png)
@@ -128,14 +133,3 @@ As a result of running this command, a `.sppkg` file will be generated inside th
 ![](IMG/OK.png)
 
 
-### Save Your Work in Source Control
-
-It is crucial you save your changes in the source control. This way other developers who need to maintain this project will be able to automatically take your changes. 
-
-After you are done with your changes, run these commands to save your work:
-
-```
-git add .
-git commit -m "Sample comment describing what I did"
-git push
-```
