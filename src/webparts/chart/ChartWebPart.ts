@@ -2,6 +2,10 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import './Overrides.module.scss';
 import { sp } from "@pnp/sp";
+import { IField, IFieldInfo } from "@pnp/sp/fields/types";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists/web";
+import "@pnp/sp/fields";
 import { Version } from '@microsoft/sp-core-library';
 import { globalContext } from './Services/GlobalContext';
 import { SPPermission } from '@microsoft/sp-page-context';
@@ -17,20 +21,20 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 import * as strings from 'ChartWebPartStrings';
-import MasterProgramChart from './components/charts/MasterChart';
+import MasterChart from './components/charts/MasterChart';
 import { NodeItem } from '../Interfaces/NodeItem';
 
 export interface IChartWebPartProps {
   program: string;
   masterChart: boolean;
 
-  
+
   listTitle: string;
   itemTitle: string;
-  
-  compactChart: boolean;   
+
+  compactChart: boolean;
   layout: string;
-  
+
   nodeHeight: number;
   nodeWidth: number;
   childrenMargin: number;
@@ -82,7 +86,7 @@ export default class ProgramChartWebPart extends BaseClientSideWebPart<IChartWeb
     console.log('RE-RENDER!');
     let element: React.ReactElement<any> = null;
     element = React.createElement(
-      MasterProgramChart,
+      MasterChart,
       {
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -100,7 +104,7 @@ export default class ProgramChartWebPart extends BaseClientSideWebPart<IChartWeb
         siblingsMargin: this.properties.siblingsMargin,
         fontSize: this.properties.fontSize,
         linkWidth: this.properties.linkWidth ?? 2,
-        linkStroke: this.properties.linkStroke ?? "#CCCCCC",       
+        linkStroke: this.properties.linkStroke ?? "#CCCCCC",
         lastUpdated: this.properties.lastUpdated,
         context: this.context
       }
@@ -150,89 +154,112 @@ export default class ProgramChartWebPart extends BaseClientSideWebPart<IChartWeb
             {
               groupName: "Data Source",
               groupFields: [
-
                 PropertyPaneTextField('listTitle', {
-                  label: strings.ProgramFieldLabel,
+                  label: strings.ListFieldLabel,
                   description: "List Title used as a data source",
-                  value: "Source"
+                  value: "FlexyChart-Data"
                 }),
 
                 PropertyPaneTextField('itemTitle', {
-                  label: strings.ProgramFieldLabel,
-                  description: "List Item Title used as a data source"
+                  label: strings.ListFieldLabel,
+                  description: "List Item Title used as a data source",
+                  value: "My First Flexy Chart"
                 }),
 
                 PropertyPaneButton('bindData', {
-                  text: "Bind Data",
+                  text: "Create Chart",
                   buttonType: 0,
-                  icon: "Sync",
-                  onClick: () => {
-                    console.log("Bind Data");
-
-                    // check if item already exists
-                    sp.web.lists.getByTitle(this.properties.listTitle).items.filter(`Title eq '${this.properties.itemTitle}'`).get().then((items: NodeItem[]) => {
+                  icon: "Add",
+                  onClick: async () => {
+                
+                    try {
+                      // Check if the list exists
+                      await sp.web.lists.getByTitle(this.properties.listTitle).get();
+                      console.log("List exists");
+                    } catch (error) {
+                      console.log("List does not exist");
+                      // Create the list with additional columns
+                      const list = await sp.web.lists.add(this.properties.listTitle, "Used to store Flexy Charts", 100);
+                      
+                      // Add Data column (multiline, plain text)
+                      await sp.web.lists.getByTitle(this.properties.listTitle).fields.addMultilineText('Data', 6, false);
+                
+                      // Add Connections column (multiline, plain text)
+                      await sp.web.lists.getByTitle(this.properties.listTitle).fields.addMultilineText('Connections', 6, false);
+                
+                      console.log("List created with additional columns");
+                    }
+                
+                    // Now that we're sure the list exists, proceed with item-related operations
+                    try {
+                      const items: NodeItem[] = await sp.web.lists.getByTitle(this.properties.listTitle).items
+                        .filter(`Title eq '${this.properties.itemTitle}'`)
+                        .get();
+                
                       if (items.length > 0) {
                         console.log("Item already exists");
                         this.properties.lastUpdated = Date.now();
                         this.render();
                       } else {
                         console.log("Item does not exist");
-                        // item does not exist, create the item
-                        // add placeholder for root node
-                        let rootItem = {
+                        // Item does not exist, create the item
+                        // Add placeholder for root node
+                        let rootItem: NodeItem = {
                           id: "0",
                           Title: this.properties.itemTitle,
-                          SubTitle: 'Root subtitle', 
-                          Description: '', 
+                          SubTitle: 'Root subtitle',
+                          Description: '',
                           parentId: null,
                           IconName: 'Settings',
                           HexColorCodeText: '#FFFFFF',
-                          HexColorCode: '#25408F',                          
-                          
-                          Hyperlink: ''
-                        } as NodeItem;
-
-                        // add a child node 
-                        let childItem = {
+                          HexColorCode: '#25408F',
+                          Hyperlink: '',
+                          Selected: false 
+                        };
+                
+                        // Add child nodes
+                        let childItem: NodeItem = {
                           id: "1",
                           Title: 'Child',
                           SubTitle: 'Child subtitle',
-                          Description: '', 
+                          Description: '',
                           parentId: 0,
                           IconName: 'D365ProjectOperations',
                           HexColorCodeText: '#FFFFFF',
                           HexColorCode: '#41535D',
-                          Hyperlink: ''
-                        } as NodeItem;
-
-                        let childItem2 = {
+                          Hyperlink: '',
+                          Selected: false 
+                        };
+                
+                        let childItem2: NodeItem = {
                           id: "2",
                           Title: 'Child 2',
                           SubTitle: 'Child subtitle 2',
-                          Description: '', 
+                          Description: '',
                           parentId: 0,
                           IconName: 'TestPlan',
                           HexColorCodeText: '#FFFFFF',
                           HexColorCode: '#258F40',
-                          Hyperlink: ''
-                        } as NodeItem;
-
-                        // create array of items to display. include root and child nodes
+                          Hyperlink: '',
+                          Selected: false 
+                        };
+                
+                        // Create array of items to display. Include root and child nodes
                         const freshItems = [rootItem, childItem, childItem2];
-
-                        // save the item to SharePoint
-                        sp.web.lists.getByTitle(this.properties.listTitle).items.add({
+                
+                        // Save the item to SharePoint
+                        await sp.web.lists.getByTitle(this.properties.listTitle).items.add({
                           Title: this.properties.itemTitle,
                           Data: JSON.stringify(freshItems),
                           Connections: JSON.stringify([]),
-                        }).then(() => {
-                          this.properties.lastUpdated = Date.now();
-                          this.render();
                         });
-
+                
+                        this.properties.lastUpdated = Date.now();
+                        this.render();
                       }
-                    });
-
+                    } catch (error) {
+                      console.error("Error in item operations:", error);
+                    }
                   }
                 })
 
@@ -313,14 +340,14 @@ export default class ProgramChartWebPart extends BaseClientSideWebPart<IChartWeb
                     { key: 'icons', text: 'Icons' },
                     { key: 'table', text: 'Table' }
                   ],
-                  selectedKey: 'icons',                 
-                }),       
-               
+                  selectedKey: 'icons',
+                }),
+
                 PropertyPaneCheckbox('compactChart', {
                   text: "Compact Chart",
                   checked: false
                 }),
-     
+
               ]
             },
 

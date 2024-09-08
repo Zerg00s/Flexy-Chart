@@ -5,20 +5,24 @@
 
 # Flexy Chart SharePoint Framework Webpart
 
+The Flexy Chart webpart is using the [org-chart](https://github.com/bumbeishvili/org-chart) project, which in turn, using the popular d3 visualization library.
+
 ## Quick Deployment
-- Download the latest package from [Releases](#X)
+- Download the latest package from [Releases](#)
 - Upload the package to the App Catalog
 - Add the webpart to a page
 
+### Tweaking Global Chart Settings
+![](IMG/Main.gif)
+
+### Editing Chart Nodes
+![](IMG/Demo.gif)
 
 
-![](IMG/Main.png)
+##  Preparing a Developer's Workstation
 
 This project is built with [SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview), [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org/). 
 
-
-
-## Preparing a Developer's Workstation
 1.  Download and install node.js: [node-v14.19.1-x64.msi](https://nodejs.org/dist/v14.19.1/node-v14.19.1-x64.msi) 
 1.  Download and install git for Windows: [64-bit Git for Windows Setup](https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/Git-2.31.1-64-bit.exe).
 1. Install [Visual Studio Code](https://code.visualstudio.com/).
@@ -27,22 +31,35 @@ This project is built with [SharePoint Framework](https://docs.microsoft.com/en-
 npm install --global gulp@4.0.2
 ```
 
-11. Run this command to install project's dependencies:
+5. Run this command to install project's dependencies:
 ```
 npm install
 ```
-12. Run this command to install the developer certificate:
+6. Run this command to install the developer certificate:
 ```
 gulp trust-dev-cert
 ```
-13. Run this command to open the project using Visual Studio code:
+7. Run this command to open the project using Visual Studio code:
 ```
 code .
 ```
+8. run the following command to install the packages:
+```
+npm install
+```
+9. run to start developing:
+```
+gulp serve --nobrowser
+```
+10. Open the [Hosted Workbench](https://contoso.sharepoint.com/sites/test/_layouts/15/workbench.aspx).
+11. Click ![](IMG/PLUS.png)
+12. Add Flexy Chart webpart:
+
+![](IMG/AddWebpart.png)
 
 
 ## Important Study Materials for Developers
-The topics are listed in the exact order you need to study them. if you already know basics of a given topic - just skip it and move on to the next one. Note that if you are not familiar with one or more of these, it might be difficult to maintain this project. If none of these topics sound familiar, take a few days or even weeks to study them. then come back and attempt to perform code changes.
+The topics are listed in the exact order you need to study them. if you already know basics of a given topic - just skip it and move on to the next one. Note that if you are not familiar with one or more of these, it might be difficult to maintain this project. If none of these topics sound familiar, take a few days or even weeks to study them. Then come back and attempt to perform code changes.
 
 - [Learn git in 15 minutes. Video on YouTube](https://www.youtube.com/watch?v=USjZcfj8yxE)
 - [Introduction to Azure DevOps](https://www.youtube.com/watch?v=JhqpF-5E10I)
@@ -57,35 +74,6 @@ The topics are listed in the exact order you need to study them. if you already 
 - [Create a SharePoint Online App/Add-in Catalog](https://www.youtube.com/watch?v=qU08CINn4gU)
 - [Get started with the SharePoint Framework](https://docs.microsoft.com/en-us/learn/modules/sharepoint-spfx-get-started/)
 - [SharePoint Framework Tutorial 1 - HelloWorld WebPart](https://www.youtube.com/watch?v=_O2Re5uRLoo)
-
-## Making changes in the source code
-Every time you attempt to make any source code changes, make sure you pull the latest version of the source code by running this command:
-
-```
-git pull
-```
-> If you don't pull the changes from the source control before you start making changes, the code on your workstation might be outdated. Remember: you are not the only person who can make changes to the source code. Don't assume the code on your computer is "the source of truth".
-
-## 👉 DO NOT USE THE BRAVE BROWSER 👈
-
-- Now run the following command to make sure http://localhost:4321/temp/manifests.js is accessible during the development:
-```
-set NODE_NO_HTTP2=1
-```
-
-- Now run the following command to "serve" the project:
-
-```
-npm run serve
-```
-
-- Wait for the command to finish. It might take 1-2 minutes.
-- Open the [Hosted Workbench](https://contoso.sharepoint.com/sites/test/_layouts/15/workbench.aspx).
-- Click ![](IMG/PLUS.png)
-- Add MS Program Chart webpart: ![](IMG/Chart.png)
-
-![](IMG/AddWebpart.png)
-
 
 
 ### Tips about the source code

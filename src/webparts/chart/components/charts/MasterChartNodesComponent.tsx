@@ -150,38 +150,45 @@ export const MasterChartNodesComponent = (props: MasterChartNodesComponentProps,
 
   return (
     <div>
-      <FontIcon aria-label="Zoom In" iconName="ZoomIn" onClick={() => { chart.zoomIn(); }} className={styles.chartIconButton} />
-      <FontIcon aria-label="Zoom Out" iconName="ZoomOut" onClick={() => { chart.zoomOut(); }} className={styles.chartIconButton} />
+      {props.data && props.data.length > 0 &&
+
+        <div>
+          <FontIcon aria-label="Zoom In" iconName="ZoomIn" onClick={() => { chart.zoomIn(); }} className={styles.chartIconButton} />
+          <FontIcon aria-label="Zoom Out" iconName="ZoomOut" onClick={() => { chart.zoomOut(); }} className={styles.chartIconButton} />
 
 
-      {globalContext.isAdmin && (
-        <span>
-          {props.editMode ? (
-            <div>
-              <pre>
-                {/* {JSON.stringify(props.connections, null, 2)} */}
+          {globalContext.isAdmin && (
+            <span>
+              {props.editMode ? (
+                <div>
+                  {/* <pre>
+                {JSON.stringify(props.connections, null, 2)} 
               </pre>
-              <span>
-                {/* <FontIcon aria-label="Cancel" iconName="Cancel" onClick={() => { props.toggleEdit(); }} className={styles.chartIconButton} /> */}
-                <Button aria-label="Cancel"
-                  iconProps={{ iconName: 'Cancel' }}
+              */}
+                  <span>
+                    {/* <FontIcon aria-label="Cancel" iconName="Cancel" onClick={() => { props.toggleEdit(); }} className={styles.chartIconButton} /> */}
+                    <Button aria-label="Cancel"
+                      iconProps={{ iconName: 'Cancel' }}
+                      onClick={() => { props.toggleEdit(); }} className={styles.chartIconButton} />
+
+                    {/* <FontIcon aria-label="Save" iconName="Save" onClick={() => { props.toggleEdit(); props.saveItems(); }} className={styles.chartIconButton} /> */}
+                    <PrimaryButton aria-label="Save"
+                      iconProps={{ iconName: 'Save' }}
+                      onClick={() => { props.toggleEdit(); props.saveItems(); }} className={styles.chartIconButton} />
+                  </span>
+
+                </div>
+              ) : (
+                <PrimaryButton aria-label="Edit"
+                  iconProps={{ iconName: 'Edit' }}
                   onClick={() => { props.toggleEdit(); }} className={styles.chartIconButton} />
-
-                {/* <FontIcon aria-label="Save" iconName="Save" onClick={() => { props.toggleEdit(); props.saveItems(); }} className={styles.chartIconButton} /> */}
-                <PrimaryButton aria-label="Save"
-                  iconProps={{ iconName: 'Save' }}
-                  onClick={() => { props.toggleEdit(); props.saveItems(); }} className={styles.chartIconButton} />
-              </span>
-
-            </div>
-          ) : (
-            <PrimaryButton aria-label="Edit"
-              iconProps={{ iconName: 'Edit' }}
-              onClick={() => { props.toggleEdit(); }} className={styles.chartIconButton} />
+              )}
+            </span>
           )}
-        </span>
-      )}
-      <div ref={d3Container} style={{ border: props.editMode ? "dashed red 6px" : "" }} />
+          <div ref={d3Container} style={{ border: props.editMode ? "dashed red 6px" : "" }} />
+        </div>
+      }
+
     </div>
   );
 };

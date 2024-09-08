@@ -1,7 +1,7 @@
 declare interface IChartWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  ProgramFieldLabel: string;
+  ListFieldLabel: string;
   MasterChartLabel: string;
   ChartLayoutLabel: string;
   ChartThemeLabel: string;

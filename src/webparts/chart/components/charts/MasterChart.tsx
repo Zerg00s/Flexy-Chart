@@ -18,16 +18,11 @@ export default class MasterProgramChart extends React.Component<IMasterProgramCh
 
   public componentDidUpdate(prevProps: IMasterProgramChartProps) {
     if (prevProps.lastUpdated !== this.props.lastUpdated) {
-      console.log("MasterProgramChart updated due to lastUpdated change");
       this.setState({ lastUpdated: this.props.lastUpdated });
     }
   }
 
   public render(): React.ReactElement<IMasterProgramChartProps> {
-    console.log("MasterProgramChart rendering, lastUpdated:", this.state.lastUpdated);
-    console.log("props!", this.props);
-
-
     if (this.props.layout === 'table') {
       return (<ItemsTable {...this.props} />);
     }

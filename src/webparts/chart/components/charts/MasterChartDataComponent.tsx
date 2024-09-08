@@ -152,29 +152,44 @@ const MasterChartDataComponent: React.FC<IMasterProgramChartProps> = (props: IMa
         console.log('fetchItems 🔃', props.listTitle, props.itemTitle);
 
         async function fetchItems() {
-            let chartItems: SPOItem[] = await sp.web.lists.getByTitle(props.listTitle).items.filter(`Title eq '${props.itemTitle}'`).get();
+            try {
+                // Try to get the list
+                const list = sp.web.lists.getByTitle(props.listTitle);
 
-            let freshItems = [] as NodeItem[];
-            let freshConnections = [] as NodeConnection[];
+                try {
+                    // Try to get the items
+                    let chartItems: SPOItem[] = await list.items.filter(`Title eq '${props.itemTitle}'`).get();
 
-            if (chartItems.length > 0) {
-                let chartItem = chartItems[0];
-                setDataItem(chartItem);
+                    let freshItems = [] as NodeItem[];
+                    let freshConnections = [] as NodeConnection[];
 
-                freshItems = JSON.parse(chartItem.Data);
-                setData(freshItems);
+                    if (chartItems.length > 0) {
+                        let chartItem = chartItems[0];
+                        setDataItem(chartItem);
 
-                if (chartItem.Connections) {
-                    freshConnections = JSON.parse(chartItem.Connections);
-                } else {
-                    freshConnections = [];
+                        freshItems = JSON.parse(chartItem.Data);
+                        setData(freshItems);
+
+                        if (chartItem.Connections) {
+                            freshConnections = JSON.parse(chartItem.Connections);
+                        } else {
+                            freshConnections = [];
+                        }
+                        // setConnections(freshConnections);
+                    } else {
+                        // Item doesn't exist
+                        setData([]);
+                        // setConnections([]);
+                    }
+                } catch (itemError) {
+                    console.error("Error fetching items:", itemError);
+                    // Handle item error (e.g., show error message to user)
                 }
-                // setConnections(freshConnections);
+            } catch (listError) {
+                console.error("Error fetching list:", listError);
             }
-
-
-
         }
+
 
         fetchItems();
 
@@ -203,6 +218,9 @@ const MasterChartDataComponent: React.FC<IMasterProgramChartProps> = (props: IMa
                 toggleEdit={toggleEdit}
                 editMode={editMode}
             />
+
+            {((data && data.length === 0) || data === null) && <div>No data to show. Please, create a new chart first. </div>}
+
 
             {selectedItem &&
                 <Panel
@@ -427,7 +445,7 @@ const MasterChartDataComponent: React.FC<IMasterProgramChartProps> = (props: IMa
                                 }} />
 
                             <br /><br />
-{/* 
+                            {/* 
                             <Button text="Connect this node"
                                 iconProps={
                                     {

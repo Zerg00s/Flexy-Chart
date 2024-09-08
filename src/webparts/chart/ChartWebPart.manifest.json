@@ -18,7 +18,8 @@
     "officeFabricIconFontName": "Org",
     "properties": {
       "description": "",
-      "listTitle": "Source",
+      "listTitle": "FlexyChart-Data",
+      "itemTitle": "My First Flexy Chart",
       "nodeHeight": 125,
       "nodeWidth": 350,
       "childrenMargin": 50,
