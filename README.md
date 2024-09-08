@@ -20,7 +20,9 @@ The Flexy Chart webpart is a SharePoint Framework webpart that allows users to c
 ![](IMG/Demo.gif)
 
 
-## Preparing a Developer's Workstation
+# Want to modify the source code?
+The webpart is flexible, but you might need to modify the source code to suit your needs. Here is how you can do it:
+## Prepare a Developer's Workstation
 
 This project is built with [SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview), [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org/). 
 
@@ -44,17 +46,13 @@ gulp trust-dev-cert
 ```
 code .
 ```
-8. run the following command to install the packages:
-```
-npm install
-```
-9. run to start developing:
+8. run to start developing:
 ```
 gulp serve --nobrowser
 ```
-10. Open the Hosted Workbench.
-11. Click ![](IMG/PLUS.png)
-12. Add Flexy Chart webpart:
+9. Open the Hosted Workbench.
+10. Click ![](IMG/PLUS.png)
+11. Add Flexy Chart webpart:
 
 ![](IMG/AddWebpart.png)
 
